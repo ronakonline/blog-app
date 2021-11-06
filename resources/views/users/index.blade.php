@@ -64,10 +64,24 @@
                                         <td
                                             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                                             @forelse ($user->roles->take(1) as $role)
-                                                {{ $role->name }}
-                                            @empty
-                                                Not assigned
+                                                 @php $userrole = $role->name @endphp
+                                             @empty
                                             @endforelse
+                                            <select name="role" id="role" class="form-control rounded-lg text-sm">
+
+                                                @foreach ($roles as $role)
+                                                    @if ($role->name == $userrole)
+                                                        <option value="{{ $role->name }}" selected>{{ $role->name }}</option>
+                                                    @else
+                                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
+                                            <button
+                                                class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                type="button">Save</button>
                                         </td>
                                     </tr>
                                 @endforeach

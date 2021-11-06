@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class userController extends Controller
@@ -16,9 +17,10 @@ class userController extends Controller
     public function index()
     {
 
-
         $users = User::all();
-        return view('users.index', compact('users'));
+        $roles = Role::all();
+
+        return view('users.index', compact('users','roles'));
     }
 
     /**
