@@ -26,7 +26,6 @@ class BlogController extends Controller
 
         $blog = [
             'user_id' => $request->user()->id,
-            'slug' => Str::slug($request->title),
             'title' => $request->title,
             'blog_text' => $request->blog_text,
         ];
